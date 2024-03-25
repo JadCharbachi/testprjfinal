@@ -21,7 +21,7 @@ export default async function TestPage() {
             Test
         </Title>
         <Card className="mt-4">
-            <Title className="pb-5">
+            <Title>
                 Titre
             </Title>
             <Text className="my-4">
