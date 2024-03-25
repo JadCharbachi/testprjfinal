@@ -11,7 +11,10 @@ const navigation = [
   { name: 'Dashboard', href: '/' },
   { name: 'Playground', href: '/playground' },
   { name: 'Test', href: '/test1' },
-  { name: 'Bank Account', href: '/bankaccount' }
+  { name: 'Bank Account', href: '/bankaccount' },
+  { name: 'Action', href: '/action' },
+  { name: 'Traiding ', href: '/traiding' }
+
 ];
 
 function classNames(...classes: string[]) {
