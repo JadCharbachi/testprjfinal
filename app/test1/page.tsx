@@ -9,6 +9,9 @@ export default async function TestPage() {
         <div>
             Page test
         </div>
+        <Card>
+            Allo
+        </Card>
         <Chart />
     </main>);
 }
