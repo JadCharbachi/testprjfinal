@@ -13,7 +13,7 @@ const navigation = [
   { name: 'Test', href: '/test1' },
   { name: 'Bank Account', href: '/bankaccount' },
   { name: 'Action', href: '/action' },
-  { name: 'Traiding ', href: '/traiding' },
+  { name: 'Trading ', href: '/trading' },
   { name: 'Bug repport ', href: '/bugrepport' }
 
 ];

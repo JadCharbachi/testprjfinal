@@ -12,7 +12,7 @@ interface Test {
 }
 
 const Object = [
-    
+
 ]
 
 export default async function TestPage() {
@@ -20,15 +20,17 @@ export default async function TestPage() {
         <Title>
             Test
         </Title>
-        <Card className="mt-4 mb-4">
+        <Card className="mt-4">
             <Title className="pb-5">
                 Titre
             </Title>
-            <Text className="mt-4">
+            <Text className="my-4">
                 Card
             </Text>
         </Card>
-        <LineChartHero />
+        <Card className="my-4">
+            <LineChartHero />
+        </Card>
         <Chart />
     </main>);
 }
