@@ -4,7 +4,7 @@ import { Card, ProgressBar } from '@tremor/react';
 
 export default function Example() {
   return (
-    <Card className="mt-40 mx-auto max-w-md">
+    <Card className="mx-auto max-w-md">
       <h4 className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">
         Sales
       </h4>
