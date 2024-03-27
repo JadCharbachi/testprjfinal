@@ -13,7 +13,7 @@ async function marketstatus2() {
   return data2;
 }
 
-function marketstatusComponent() {
+function MarketstatusComponent() {
   const [data,setData] = useState(null);
   useEffect(() => {
     marketstatus2().then(data2 => setData(data2))
@@ -26,5 +26,5 @@ function marketstatusComponent() {
   )
 }
 
-export default marketstatusComponent;
+export default MarketstatusComponent;
 
