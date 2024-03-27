@@ -4,6 +4,10 @@ import { Card, Title, Text, TabGroup, TabList, Tab, TabPanel, TabPanels } from '
 import Search from "../search";
 import UsersTable from "../table";
 import { LineChartHero } from "./linechart";
+//--------------------------------------------------------------------
+import { restClient } from '@polygon.io/client-js';
+const rest = restClient(process.env.mDQEhT0lHximdZuUI62cUuNVTufo58i2);
+//--------------------------------------------------------------------
 
 interface Test {
     a1: number;
@@ -16,7 +20,8 @@ const Object = [
 ]
 
 export default async function TestPage() {
-    return (<main className="p-4 md:p-10 mx-auto max-w-7xl">
+    return (
+    <main className="p-4 md:p-10 mx-auto max-w-7xl">
         <Title>
             Test
         </Title>
@@ -48,5 +53,9 @@ export default async function TestPage() {
                 </TabPanels>
             </TabGroup>
         </Card>
-    </main>);
+        
+    </main>
+);
+    
+    
 }
