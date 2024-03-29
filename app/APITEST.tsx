@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import { restClient } from '@polygon.io/client-js';
 const rest = restClient(process.env.mDQEhT0lHximdZuUI62cUuNVTufo58i2);
-
-const url = "https://api.polygon.io/v1/marketstatus/now?apiKey=mDQEhT0lHximdZuUI62cUuNVTufo58i2"
-
 const apikey = "mDQEhT0lHximdZuUI62cUuNVTufo58i2"
+
+const url = "https://api.polygon.io/v1/marketstatus/now?apiKey="+ apikey;
+// {JSON.stringify(data)
+// test-is-active={data["currencies"]["fx"]}>Welcome,{data["currencies"]["fx"]? "true" : "false"
+
 
 
 async function marketstatus2() {
@@ -19,12 +21,22 @@ function MarketstatusComponent() {
     marketstatus2().then(data2 => setData(data2))
   }, []);
 
+
+
+  if (!data) {
+    return <p>Testing in working</p>; // Early return if data is null
+  }
+
   return (
     <div>
-      <p>{JSON.stringify(data)}</p>
+      <p>Welcome, {data["currencies"]["fx"]}!</p>
     </div>
-  )
+  );
 }
+
+
+
+
 
 export default MarketstatusComponent;
 
