@@ -1,8 +1,5 @@
 import Chart from "./chart"
-import { sql } from "@vercel/postgres";
 import { Card, Title, Text, TabGroup, TabList, Tab, TabPanel, TabPanels } from '@tremor/react';
-import Search from "../search";
-import UsersTable from "../table";
 import { LineChartHero } from "./linechart";
 //--------------------------------------------------------------------
 import { restClient } from '@polygon.io/client-js';
