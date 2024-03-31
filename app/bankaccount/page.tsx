@@ -1,7 +1,7 @@
 'use client'
 
 import { Card } from "@tremor/react";
-import MarketstatusComponent from "../APITEST";
+import MarketstatusComponent from "../TheAPI/APITEST";
 import { RiArrowRightSFill } from "@remixicon/react";
 
 
