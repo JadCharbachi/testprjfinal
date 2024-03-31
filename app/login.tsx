@@ -2,7 +2,7 @@
 
 import { FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { Card } from '@tremor/react'
+import { Card, Title } from '@tremor/react'
 
 export default function LoginPage() {
     const router = useRouter()
@@ -28,16 +28,21 @@ export default function LoginPage() {
     }
 
     return (
-        <Card>
-            <form onSubmit={handleSubmit}>
-                <div className='my-4 '>
-                    <input type="email" name="email" placeholder="Email" required />
-                </div>
-                <div className='my-4'>
-                    <input type="password" name="password" placeholder="Password" required />
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </Card>
+        <main className="p-4 md:p-10 mx-auto max-w-7xl">
+            <Title className='mb-4'>
+                Login page
+            </Title>
+            <Card>
+                <form onSubmit={handleSubmit}>
+                    <div className='my-4 '>
+                        <input type="email" name="email" placeholder="Email" required />
+                    </div>
+                    <div className='my-4'>
+                        <input type="password" name="password" placeholder="Password" required />
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </Card>
+        </main>
     )
 }
