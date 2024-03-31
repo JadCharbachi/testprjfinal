@@ -10,7 +10,7 @@ import Image from 'next/image';
 const navigation = [
   { name: 'Accueil', href: '/' },
   { name: 'Playground', href: '/playground' },
- // { name: 'Test', href: '/test1' },
+  // { name: 'Test', href: '/test1' },
   { name: 'Portfolio', href: '/bankaccount' },
   { name: 'Négocier ', href: '/trading' },
   { name: 'Marchés', href: '/action' },
@@ -120,7 +120,8 @@ export default function Navbar({ user }: { user: any }) {
                                 active ? 'bg-gray-100' : '',
                                 'flex w-full px-4 py-2 text-sm text-gray-700'
                               )}
-                              onClick={() => signIn('github')}
+                              //onClick={() => signIn('github')}
+                              onClick={() => window.location.href = '/login'}
                             >
                               Sign in
                             </button>
