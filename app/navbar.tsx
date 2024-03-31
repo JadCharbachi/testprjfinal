@@ -8,14 +8,14 @@ import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 
 const navigation = [
-  { name: 'Dashboard', href: '/' },
+  { name: 'Accueil', href: '/' },
   { name: 'Playground', href: '/playground' },
-  { name: 'Test', href: '/test1' },
-  { name: 'Bank Account', href: '/bankaccount' },
-  { name: 'Action', href: '/action' },
-  { name: 'Trading ', href: '/trading' },
+ // { name: 'Test', href: '/test1' },
+  { name: 'Portfolio', href: '/bankaccount' },
+  { name: 'Négocier ', href: '/trading' },
+  { name: 'Marchés', href: '/action' },
   { name: 'Bug Report ', href: '/bugreport' },
-  { name: 'Login', href: '/login' }
+  { name: 'Se Connecter', href: '/login' }
 
 ];
 
@@ -31,15 +31,15 @@ export default function Navbar({ user }: { user: any }) {
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 justify-between">
+            <div className="flex h-16 md:justify-center xs:justify-between lg:justify-center md:justify-between">
               <div className="flex">
-                <div className="flex flex-shrink-0 items-center">
+                <div className="flex flex-shrink-0 items-center ">
                   <svg
                     width="32"
                     height="32"
                     viewBox="0 0 32 32"
                     fill="none"
-                    className="text-gray-100"
+                    className="text-gray-50"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <rect
@@ -52,7 +52,7 @@ export default function Navbar({ user }: { user: any }) {
                       fillRule="evenodd"
                       clipRule="evenodd"
                       d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-                      fill="black"
+                      fill="darkblue"
                     />
                   </svg>
                 </div>
@@ -63,9 +63,9 @@ export default function Navbar({ user }: { user: any }) {
                       href={item.href}
                       className={classNames(
                         pathname === item.href
-                          ? 'border-slate-500 text-gray-900'
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                        'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+                          ? 'border-blue-850 text-blue-500'
+                          : 'border-transparent text-blue-800 hover:text-blue-800 hover:border-blue-300',
+                        'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold'
                       )}
                       aria-current={pathname === item.href ? 'page' : undefined}
                     >
