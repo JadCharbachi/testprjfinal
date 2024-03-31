@@ -8,14 +8,14 @@ import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 
 const navigation = [
-  { name: 'Dashboard', href: '/' },
+  { name: 'Accueil', href: '/' },
   { name: 'Playground', href: '/playground' },
-  { name: 'Test', href: '/test1' },
-  { name: 'Bank Account', href: '/bankaccount' },
-  { name: 'Action', href: '/action' },
-  { name: 'Trading ', href: '/trading' },
+ // { name: 'Test', href: '/test1' },
+  { name: 'Portfolio', href: '/bankaccount' },
+  { name: 'Négocier ', href: '/trading' },
+  { name: 'Marchés', href: '/action' },
   { name: 'Bug Report ', href: '/bugreport' },
-  { name: 'Login', href: '/login' }
+  { name: 'Se Connecter', href: '/login' }
 
 ];
 
