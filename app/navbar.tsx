@@ -15,7 +15,6 @@ const navigation = [
   { name: 'Négocier ', href: '/trading' },
   { name: 'Marchés', href: '/action' },
   { name: 'Bug Report ', href: '/bugreport' },
-  { name: 'Se Connecter', href: '/login' }
 
 ];
 
