@@ -14,7 +14,8 @@ const navigation = [
   { name: 'Bank Account', href: '/bankaccount' },
   { name: 'Action', href: '/action' },
   { name: 'Trading ', href: '/trading' },
-  { name: 'Bug Report ', href: '/bugreport' }
+  { name: 'Bug Report ', href: '/bugreport' },
+  { name: 'Login', href: '/login' }
 
 ];
 
