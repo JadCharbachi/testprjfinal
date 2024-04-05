@@ -5,7 +5,10 @@ import Component from "./component";
 export default function Page() {
     return (
         <div>
-            <Suspense fallback={<><TitleSkeleton /><CardSkeleton /></>}>
+            <Suspense fallback={<>
+                <TitleSkeleton />
+                <CardSkeleton />
+                <div><CardSkeleton /></div></>}>
                 <Component />
             </Suspense>
         </div>
