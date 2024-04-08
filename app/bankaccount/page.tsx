@@ -19,6 +19,9 @@ export default async function TestPage() {
             Market Open
           </span>
         </div>
+        <div>
+          <TickerChart />
+        </div>
         </Card>
       </Suspense>
     </main>
