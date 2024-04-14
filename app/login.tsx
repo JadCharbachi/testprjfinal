@@ -24,6 +24,7 @@ export default function LoginPage() {
             router.push('/profile')
         } else {
             // Handle errors
+            console.log('login error')
         }
     }
 
