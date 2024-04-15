@@ -23,7 +23,7 @@ function MarketstatusComponent() {
 
 
   if (!data) {
-    return <p>Testing in working</p>; // Early return if data is null
+    return <p>Wait</p>; // Early return if data is null
   }
 
   if (data && (data["isOpen"])) {
