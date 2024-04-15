@@ -112,20 +112,36 @@ export default function Navbar({ user }: { user: any }) {
                           )}
                         </Menu.Item>
                       ) : (
-                        <Menu.Item>
+                        <div>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'flex w-full px-4 py-2 text-sm text-gray-700'
+                                )}
+                                //onClick={() => signIn('github')}
+                                onClick={() => window.location.href = '/login'}
+                              >
+                                Sign in
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
                           {({ active }) => (
-                            <button
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'flex w-full px-4 py-2 text-sm text-gray-700'
-                              )}
-                              //onClick={() => signIn('github')}
-                              onClick={() => window.location.href = '/login'}
-                            >
-                              Sign in
-                            </button>
-                          )}
-                        </Menu.Item>
+                              <button
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'flex w-full px-4 py-2 text-sm text-gray-700'
+                                )}
+                                //onClick={() => signIn('github')}
+                                onClick={() => window.location.href = '/signup'}
+                              >
+                                Sign up
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </div>
                       )}
                     </Menu.Items>
                   </Transition>
