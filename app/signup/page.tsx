@@ -1,7 +1,7 @@
+import SignUpPage from "../signup";
+
 export default function Page(){
     return(
-        <main>
-            Sign up page
-        </main>
+        <SignUpPage/>
     )
 }
