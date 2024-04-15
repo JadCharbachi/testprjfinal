@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { restClient } from '@polygon.io/client-js';
 import { RiArrowRightSFill } from '@remixicon/react';
-const rest = restClient(process.env.mDQEhT0lHximdZuUI62cUuNVTufo58i2);
-const apikey = "mDQEhT0lHximdZuUI62cUuNVTufo58i2"
+const apikey = "coe8u09r01qjje1ujas0coe8u09r01qjje1ujasg"
 
-const url = "https://api.polygon.io/v1/marketstatus/now?apiKey="+ apikey;
+const url = "https://finnhub.io/api/v1/stock/market-status?exchange=US&token="+ apikey;
 // {JSON.stringify(data)
 // test-is-active={data["currencies"]["fx"]}>Welcome,{data["currencies"]["fx"]? "true" : "false"
 
@@ -28,17 +26,16 @@ function MarketstatusComponent() {
     return <p>Testing in working</p>; // Early return if data is null
   }
 
-  if (data && (data["currencies"]["crypto"] === "open")) {
+  if (data && (data["isOpen"])) {
   return (
-
         <div className="flex flex-wrap justify-end gap-4">
-          <span className={"inline-flex items-center gap-x-5 rounded-tremor-small px-2 py-1 text-tremor-label font-semibold bg-emerald-100 text-emerald-800 ring-emerald-600/10 ring-inset ring-tremor-ring"}>
+          <span className={"inline-flex items-center gap-x-1 rounded-tremor-small px-2 py-1 text-tremor-label font-semibold bg-emerald-100 text-emerald-800 ring-emerald-600/10 ring-inset ring-tremor-ring"}>
             <RiArrowRightSFill className="-ml-0.5 h-4 w-4" aria-hidden={true} />
             Market Open
           </span>
         </div>
   );
-  }else if (data && !(data["currencies"]["crypto"] === "open")) {
+  }else if (data && !(data["isOpen"])) {
     return (
       <div className="flex flex-wrap justify-end gap-4">
       <span className={"inline-flex items-center gap-x-1 rounded-tremor-small px-2 py-1 text-tremor-label font-semibold bg-red-100 text-red-800 ring-red-600/10 ring-inset ring-tremor-ring"}>
