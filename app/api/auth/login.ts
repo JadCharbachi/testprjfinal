@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+{/*import { NextApiRequest, NextApiResponse } from 'next'
 import { signIn } from 'next-auth/react'
  
 export default async function handler(
@@ -17,4 +17,4 @@ export default async function handler(
       res.status(500).json({ error: 'Something went wrong.' })
     }
   }
-}
+}*/}
