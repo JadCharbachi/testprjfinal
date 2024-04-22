@@ -26,6 +26,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
   const [loading2, setLoading2] = useState<boolean>(true);
   const [error2, setError2] = useState<string | null>(null);
 
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
@@ -39,6 +40,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
               const jsonData1 = await response1.json();
               setData1(jsonData1);
               setLoading1(false);
+              setLastUpdated(new Date(new Date(jsonData1['t'] * 1000).toLocaleString('en-US', { timeZone: 'America/New_York' })));
           } catch (error) {
               setError1('Error fetching data');
               setLoading1(false);
@@ -102,6 +104,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
               </span>
               </div>
             </div>
+            {lastUpdated && <p className="text-sm text-gray-500 justify-center">Last updated: {lastUpdated.toLocaleString()}</p>}
           </Card>}
         </div>
     ));
