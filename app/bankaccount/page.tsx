@@ -2,7 +2,7 @@
 
 import { Card } from "@tremor/react";
 import TickerChart from "../TheAPI/apitestcharts";
-import MarketstatusComponent from "../TheAPI/APITEST";
+import MarketstatusComponent from "../TheAPI/marketstatus";
 import { RiArrowRightSFill } from "@remixicon/react";
 import { Suspense } from "react";
 import CardSkeleton from "../ui/skeleton";

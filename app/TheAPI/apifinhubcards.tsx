@@ -4,14 +4,17 @@ import { Card, Title } from '@tremor/react';
 import React, { useEffect, useState } from 'react';
 
 const apikey = 'coe8u09r01qjje1ujas0coe8u09r01qjje1ujasg';
-const symbol = 'KHC';
-const url = "https://finnhub.io/api/v1/quote?symbol=" + symbol + "&token=" + apikey;
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
 }
+interface ApiFinhubCardsProps {
+  symbol: string;
+}
 
-const ApiFinhubCards: React.FC = () => {
+
+const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
+  const url = "https://finnhub.io/api/v1/quote?symbol=" + symbol + "&token=" + apikey;
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -41,7 +44,7 @@ const ApiFinhubCards: React.FC = () => {
     }
     return (
         <div>
-            {<Card className='w-1/3 ml-0 mr-auto'>
+            {<Card className=' ml-0 mr-auto'>
                 <Title className="text-tremor-title text-blue-800  dark:text-dark-tremor-title">{symbol}</Title>
             <div className="flex items-center gap-4 ">
             <p className="text-tremor-metric font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong ">
@@ -63,6 +66,7 @@ const ApiFinhubCards: React.FC = () => {
           </Card>}
         </div>
     );
-};
+}
+
 
 export default ApiFinhubCards;
