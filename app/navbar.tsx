@@ -32,8 +32,8 @@ export default function Navbar({ user }: { user: any }) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 md:justify-center xs:justify-between lg:justify-center md:justify-between">
               <div className="flex">
-                
                 <div className="flex flex-shrink-0 items-center ">
+                  {/*source : https://iconduck.com/icons/64933/sf*/}
                   <svg
                     width="32"
                     height="32"
@@ -46,8 +46,8 @@ export default function Navbar({ user }: { user: any }) {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <circle
-                     width="50%"
-                     height="50%"
+                      width="50%"
+                      height="50%"
                       cx="45"
                       cy="45"
                       fill="currentColor"

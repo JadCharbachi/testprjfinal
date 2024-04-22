@@ -1,22 +1,23 @@
 'use client'
 
 import { Card, Title } from '@tremor/react';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
+import { APIcardSkeleton } from '../ui/skeleton';
 
 const apikey = 'coe8u09r01qjje1ujas0coe8u09r01qjje1ujasg';
 
 function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(' ');
 }
 interface ApiFinhubCardsProps {
   symbol: string;
 }
 
 
-const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
+const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
   const actualSymbol = symbol.slice(0, -13);
   const url1 = "https://finnhub.io/api/v1/quote?symbol=" + actualSymbol + "&token=" + apikey;
-  const url2 = "https://finnhub.io/api/v1/search?q="+ actualSymbol +"&token=" + apikey; 
+  const url2 = "https://finnhub.io/api/v1/search?q=" + actualSymbol + "&token=" + apikey;
 
   const [data1, setData1] = useState<any>(null);
   const [loading1, setLoading1] = useState<boolean>(true);
@@ -30,64 +31,66 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
-      setIsOpen(false);
+    setIsOpen(false);
   };
 
   useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const response1 = await fetch(url1);
-              const jsonData1 = await response1.json();
-              setData1(jsonData1);
-              setLoading1(false);
-              setLastUpdated(new Date(new Date(jsonData1['t'] * 1000).toLocaleString('en-US', { timeZone: 'America/New_York' })));
-          } catch (error) {
-              setError1('Error fetching data');
-              setLoading1(false);
-          }
-      };
+    const fetchData = async () => {
+      try {
+        const response1 = await fetch(url1);
+        const jsonData1 = await response1.json();
+        setData1(jsonData1);
+        setLoading1(false);
+        setLastUpdated(new Date(new Date(jsonData1['t'] * 1000).toLocaleString('en-US', { timeZone: 'America/New_York' })));
+      } catch (error) {
+        setError1('Error fetching data');
+        setLoading1(false);
+      }
+    };
 
-      fetchData();
+    fetchData();
   }, []);
 
   useEffect(() => {
     const fetchCompanyName = async () => {
-        try {
-            const response = await fetch(url2);
-            const jsonData = await response.json();
+      try {
+        const response = await fetch(url2);
+        const jsonData = await response.json();
 
-            const resultsToCheck = jsonData.result.slice(0, jsonData.result.length > 30 ? 30 : jsonData.result.length);
-            for (let company of resultsToCheck) {
-                if (company.symbol === actualSymbol || company.displaySymbol === actualSymbol) {
-                    setCompanyName(company.description);
-                    break;
-                }
-            }
-            setLoading2(false);
-        } catch (error) {
-            setError2('Error fetching data');
-            setLoading2(false);
+        const resultsToCheck = jsonData.result.slice(0, jsonData.result.length > 30 ? 30 : jsonData.result.length);
+        for (let company of resultsToCheck) {
+          if (company.symbol === actualSymbol || company.displaySymbol === actualSymbol) {
+            setCompanyName(company.description);
+            break;
+          }
         }
+        setLoading2(false);
+      } catch (error) {
+        setError2('Error fetching data');
+        setLoading2(false);
+      }
     };
 
     fetchCompanyName();
-}, [actualSymbol]);
+  }, [actualSymbol]);
 
   if (loading1 || loading2) {
-      return <div>Loading...</div>;
+    return (
+      <APIcardSkeleton />
+    );
   }
 
   if (error1 || error2) {
-      return <div>{error1 || error2}</div>;
+    return <div>{error1 || error2}</div>;
   }
-    return (
-      isOpen && (
-        <div>
-            {<Card className=' ml-0 mr-auto'>
-            <Title className="text-tremor-title text-blue-800  dark:text-dark-tremor-title">{companyName?.toUpperCase()}</Title>
-            <p className="text-sm text-gray-500">{actualSymbol.toUpperCase()}</p>
-                <button onClick={handleClose} className="absolute top-0 right-0 m-2">X</button>
-            <div className="flex items-center gap-4 ">
+  return (
+    isOpen && (
+      <div>
+        {<Card className=' ml-0 mr-auto'>
+          <Title className="text-tremor-title text-blue-800  dark:text-dark-tremor-title">{companyName?.toUpperCase()}</Title>
+          <p className="text-sm text-gray-500">{actualSymbol.toUpperCase()}</p>
+          <button onClick={handleClose} className="absolute top-0 right-0 m-2">X</button>
+          <div className="flex items-center gap-4 ">
             <p className="text-tremor-metric font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong ">
               {data1['c']} USD
             </p>
@@ -102,11 +105,11 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
               >
                 {data1['c'] > data1['pc'] ? '▲' : '▼'} {data1['dp']} %
               </span>
-              </div>
             </div>
-            {lastUpdated && <p className="text-sm text-gray-500 justify-center">Last updated: {lastUpdated.toLocaleString()}</p>}
-          </Card>}
-        </div>
+          </div>
+          {lastUpdated && <p className="text-sm text-gray-500 justify-center">Last updated: {lastUpdated.toLocaleString()}</p>}
+        </Card>}
+      </div>
     ));
 }
 
