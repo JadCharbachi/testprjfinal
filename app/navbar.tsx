@@ -12,7 +12,7 @@ const navigation = [
   { name: 'Playground', href: '/playground' },
   // { name: 'Test', href: '/test1' },
   { name: 'Portfolio', href: '/bankaccount' },
-  { name: 'Négocier ', href: '/trading' },
+  { name: 'Négocier ', href: '/test1' },
   { name: 'Marchés', href: '/action' },
   { name: 'Bug Report ', href: '/bugreport' },
 
