@@ -33,6 +33,9 @@ export default function Navbar({ user }: { user: any }) {
             <div className="flex h-16 md:justify-center xs:justify-between lg:justify-center md:justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center ">
+                  <image>
+                    
+                  </image>
                   <svg
                     width="32"
                     height="32"
@@ -50,7 +53,8 @@ export default function Navbar({ user }: { user: any }) {
                     <path
                       fillRule="evenodd"
                       clipRule="evenodd"
-                      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
+                      d="M12 6 A6 6 0 1 0 6 12 A6 6 0 1 1 0 18"
+                      //d="M17.6482 10.1305 L15.8785 7.02583 L7.02979 22.5499 H10.5278 L17.6482 10.1305 Z M19.8798 14.0457 L18.11 17.1983 L19.394 19.4511 H16.8453 L15.1056 22.5499 H24.7272 L19.8798 14.0457 Z"
                       fill="darkblue"
                     />
                   </svg>
