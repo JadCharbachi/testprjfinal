@@ -1,8 +1,6 @@
 'use client'
 
-import Chart from "./chart"
 import { Card, Title, Text, TabGroup, TabList, Tab, TabPanel, TabPanels } from '@tremor/react';
-import { LineChartHero } from "./linechart";
 import ApiFinhubCards from "../TheAPI/apifinhubcards";
 import MarketstatusComponent from "../TheAPI/APITEST";
 
