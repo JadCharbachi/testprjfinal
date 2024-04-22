@@ -21,7 +21,7 @@ const Page = () => {
         height: 800,
         symbol: 'AAPL',
         interval: 'D',
-        timezone: 'Etc/UTC',
+        timezone: 'Etc/EST',
         theme: 'light',
         style: '1',
         locale: 'en',
@@ -43,7 +43,7 @@ const Page = () => {
   
   return (
     <div>
-      <div id="chart-container" style={{ width: '100%', height: '500px' }}></div>
+      <div id="chart-container" style={{ width: '100%', height: '100%' }}></div>
     </div>
   );
 }
