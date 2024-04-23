@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import CardSkeleton, { TitleSkeleton } from "./skeleton";
+import CardSkeleton, { APIcardSkeleton, TitleSkeleton } from "./skeleton";
 import Component from "./component";
 
 export default function Page() {
@@ -8,7 +8,8 @@ export default function Page() {
             <Suspense fallback={<>
                 <TitleSkeleton />
                 <CardSkeleton />
-                <div><CardSkeleton /></div></>}>
+                <APIcardSkeleton />
+            </>}>
                 <Component />
             </Suspense>
         </div>
