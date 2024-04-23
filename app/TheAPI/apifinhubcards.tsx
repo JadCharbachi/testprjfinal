@@ -16,8 +16,8 @@ interface ApiFinhubCardsProps {
 
 const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
   const actualSymbol = symbol.slice(0, -13);
-  const url1 = "https://finnhub.io/api/v1/quote?symbol=" + actualSymbol + "&token=" + apikey;
-  const url2 = "https://finnhub.io/api/v1/search?q=" + actualSymbol + "&token=" + apikey;
+  const url1 = "https://finnhub.io/api/v1/quote?symbol=" + actualSymbol.toUpperCase() + "&token=" + apikey;
+  const url2 = "https://finnhub.io/api/v1/search?q=" + actualSymbol.toUpperCase() + "&token=" + apikey;
 
   const [data1, setData1] = useState<any>(null);
   const [loading1, setLoading1] = useState<boolean>(true);
