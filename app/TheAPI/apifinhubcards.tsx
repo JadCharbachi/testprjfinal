@@ -58,7 +58,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({symbol}) => {
 
             const resultsToCheck = jsonData.result.slice(0, jsonData.result.length > 30 ? 30 : jsonData.result.length);
             for (let company of resultsToCheck) {
-                if (company.symbol === actualSymbol || company.displaySymbol === actualSymbol) {
+                if (company.symbol === actualSymbol || company.displaySymbol === actualSymbol.toUpperCase()) {
                     setCompanyName(company.description);
                     break;
                 }

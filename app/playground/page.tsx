@@ -21,7 +21,7 @@ const Page = () => {
         height: 800,
         symbol: 'AAPL',
         interval: 'D',
-        timezone: 'Etc/EST',
+        timezone: 'America/New_York',
         theme: 'light',
         style: '1',
         locale: 'en',
