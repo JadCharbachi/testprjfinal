@@ -39,7 +39,7 @@ export default function Navbar({ user }: { user: any }) {
                     height="32"
                     viewBox="0 0 90 90"
                     clip-rule="evenodd"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     stroke-linejoin="round"
                     stroke-miterlimit="2"
                     color='darkblue'

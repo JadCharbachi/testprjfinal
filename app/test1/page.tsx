@@ -37,7 +37,7 @@ export default function TestPage() {
                 </form>
                 <div className="flex flex-wrap mt-4 gap-4">
                     {symbols.map(symbol => (
-                        <ApiFinhubCards key={symbol} symbol={symbol} />
+                        <ApiFinhubCards key={symbol} symbol={symbol.toUpperCase()} />
                     ))}
                 </div>
             </Card>
