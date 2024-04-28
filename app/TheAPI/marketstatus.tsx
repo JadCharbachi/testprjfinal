@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { RiArrowRightSFill } from '@remixicon/react';
+import { Spinner } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const apikey = "coe8u09r01qjje1ujas0coe8u09r01qjje1ujasg"
 
 const url = "https://finnhub.io/api/v1/stock/market-status?exchange=US&token="+ apikey;
@@ -23,7 +26,11 @@ function MarketstatusComponent() {
 
 
   if (!data) {
-    return <p>Wait</p>; // Early return if data is null
+    return (
+      <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    );
   }
 
   if (data && (data["isOpen"])) {

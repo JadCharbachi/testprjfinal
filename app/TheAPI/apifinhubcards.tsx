@@ -3,6 +3,8 @@
 import { Card, Title } from '@tremor/react';
 import React, { Suspense, useEffect, useState } from 'react';
 import { APIcardSkeleton } from '../ui/skeleton';
+import { Spinner } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const apikey = 'coe8u09r01qjje1ujas0coe8u09r01qjje1ujasg';
 
@@ -22,6 +24,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
   const [data1, setData1] = useState<any>(null);
   const [loading1, setLoading1] = useState<boolean>(true);
   const [error1, setError1] = useState<string | null>(null);
+  const [accessError, setAccessError] = useState(false);
 
   const [companyName, setCompanyName] = useState<string | null>(null);
   const [loading2, setLoading2] = useState<boolean>(true);
@@ -39,15 +42,20 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
       try {
         const response1 = await fetch(url1);
         const jsonData1 = await response1.json();
+        if (jsonData1.error === "You don't have access to this resource.") {
+            setAccessError(true);
+        }
+            
+        
         setData1(jsonData1);
         setLoading1(false);
         setLastUpdated(new Date(new Date(jsonData1['t'] * 1000).toLocaleString('en-US', { timeZone: 'America/New_York' })));
       } catch (error) {
-        setError1('Error fetching data');
+        setError1("ERROR FETCHING DATA");
         setLoading1(false);
       }
     };
-
+    
     fetchData();
   }, []);
 
@@ -76,7 +84,9 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
 
   if (loading1 || loading2) {
     return (
-      <APIcardSkeleton />
+      <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
     );
   }
 
@@ -86,7 +96,18 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
   return (
     isOpen && (
       <div>
-        {<Card className=' ml-0 mr-auto'>
+        {accessError ? (
+        <Card className=' ml-0 mr-auto'>
+          <div>Vous n'avez pas accès à cette ressource</div>
+          <button onClick={handleClose} className="absolute top-0 right-0 m-2">X</button>
+        </Card>
+      ) : data1.t === 0 ? (
+        <Card className=' ml-0 mr-auto'>
+          <div>Mauvais Symbole</div>
+          <button onClick={handleClose} className="absolute top-0 right-0 m-2">X</button>
+        </Card>
+      ) : (
+        <Card className=' ml-0 mr-auto'>
           <Title className="text-tremor-title text-blue-800  dark:text-dark-tremor-title">{companyName?.toUpperCase()}</Title>
           <p className="text-sm text-gray-500">{actualSymbol.toUpperCase()}</p>
           <button onClick={handleClose} className="absolute top-0 right-0 m-2">X</button>
@@ -108,7 +129,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
             </div>
           </div>
           {lastUpdated && <p className="text-sm text-gray-500 justify-center">Last updated: {lastUpdated.toLocaleString()}</p>}
-        </Card>}
+        </Card>)}
       </div>
     ));
 }
