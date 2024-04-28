@@ -26,7 +26,7 @@ function NewsCard() {
         return response.json();
       })
       .then(data => {
-        setNews(data.slice(-20)); // get the last 20 news items
+        setNews(data.slice(0,20)); // limit to 20 news items
         setIsLoading(false);
       })
       .catch(error => {
@@ -65,7 +65,7 @@ function NewsCard() {
                   <Card.Text>
                     {summary}
                   </Card.Text>
-                  <Button variant="primary" href={url}>Go to news</Button>
+                  <Button variant="primary" href={url}>Lire la suite</Button>
                 </Card.Body>
               </Card>
             </Col>

@@ -9,11 +9,10 @@ import Image from 'next/image';
 
 const navigation = [
   { name: 'Accueil', href: '/' },
-  { name: 'Playground', href: '/playground' },
-  // { name: 'Test', href: '/test1' },
-  { name: 'Portfolio', href: '/bankaccount' },
-  { name: 'Négocier ', href: '/test1' },
-  { name: 'Marchés', href: '/action' },
+  { name: 'Graphiques', href: '/graphique' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Négocier ', href: '/negociations' },
+  { name: 'Nouvelles', href: '/nouvelles' },
   { name: 'Bug Report ', href: '/bugreport' },
 
 ];

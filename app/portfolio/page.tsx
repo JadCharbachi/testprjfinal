@@ -6,7 +6,7 @@ import MarketstatusComponent from "../TheAPI/marketstatus";
 import { RiArrowRightSFill } from "@remixicon/react";
 import { Suspense } from "react";
 import CardSkeleton from "../ui/skeleton";
-import CompoundInterestCalculator from "../bankaccount/calculateur";
+import CompoundInterestCalculator from "./calculateur";
 
 
 export default async function TestPage() {
