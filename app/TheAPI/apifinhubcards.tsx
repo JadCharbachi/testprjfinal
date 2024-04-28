@@ -57,7 +57,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
     };
     
     fetchData();
-  }, []);
+  }, [url1]);
 
   useEffect(() => {
     const fetchCompanyName = async () => {
@@ -80,7 +80,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
     };
 
     fetchCompanyName();
-  }, [actualSymbol]);
+  }, [actualSymbol,url2]);
 
   if (loading1 || loading2) {
     return (
