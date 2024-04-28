@@ -98,7 +98,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
       <div>
         {accessError ? (
         <Card className=' ml-0 mr-auto'>
-          <div>Vous n'avez pas accès à cette ressource</div>
+          <div>Vous n&apos;avez pas accès à cette ressource</div>
           <button onClick={handleClose} className="absolute top-0 right-0 m-2">X</button>
         </Card>
       ) : data1.t === 0 ? (
