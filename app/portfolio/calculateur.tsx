@@ -83,7 +83,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 <input type="number" style={styles.input} value={montantInitial} onChange={(e) => setMontantInitial(e.target.value)} />
             </div>
             <div>
-                <label>Taux d'Intérêt (%):</label>
+                <label>Taux d&apos;Intérêt (%):</label>
                 <input type="number" style={styles.input} value={tauxInteret} onChange={(e) => setTauxInteret(e.target.value)} />
             </div>
             <div>
