@@ -35,7 +35,7 @@ export default function TestPage() {
                     />
                     <button type="submit" className="border border-3 rounded p-1">Search</button>
                 </form>
-                <div className="flex flex-wrap mt-4 gap-4">
+                <div className="flex flex-wrap mt-4">
                     {symbols.map(symbol => (
                         <ApiFinhubCards key={symbol} symbol={symbol.toUpperCase()} />
                     ))}
