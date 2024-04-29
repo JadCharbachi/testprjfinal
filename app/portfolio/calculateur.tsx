@@ -1,23 +1,42 @@
 import React, { useState } from 'react';
 
 const CompoundInterestCalculator: React.FC = () => {
-    const [montantInitial, setMontantInitial] = useState(0);
-    const [tauxInteret, setTauxInteret] = useState(0);
-    const [cashFlow, setCashFlow] = useState(0);
-    const [annees, setAnnees] = useState(0);
-    const [resultat, setResultat] = useState(0);
+    const [montantInitial, setMontantInitial] = useState('');
+    const [tauxInteret, setTauxInteret] = useState('');
+    const [cashFlow, setCashFlow] = useState('');
+    const [annees, setAnnees] = useState('');
+    const [resultat, setResultat] = useState('');
     const [cashFlowParMois, setCashFlowParMois] = useState(false);
+    const [erreur, setErreur] = useState(false);
 
     const calculInteretCompose = () => {
-        const totalValeur = montantInitial * Math.pow(1 + tauxInteret / 100, annees);
+        if (!montantInitial && !tauxInteret && !cashFlow && !annees) {
+            setErreur(true);
+            setResultat('');
+            return;
+        }
+
+        setErreur(false);
+
+        const montantInitialValue = parseFloat(montantInitial);
+        const tauxInteretValue = parseFloat(tauxInteret);
+        const cashFlowValue = parseFloat(cashFlow);
+        const anneesValue = parseFloat(annees);
+
+        if (isNaN(montantInitialValue) || isNaN(tauxInteretValue) || isNaN(cashFlowValue) || isNaN(anneesValue)) {
+            setResultat('');
+            return;
+        }
+
+        const totalValeur = montantInitialValue * Math.pow(1 + tauxInteretValue / 100, anneesValue);
         let totalCashFlow = 0;
         if (cashFlowParMois) {
-            totalCashFlow = cashFlow * 12 * ((Math.pow(1 + tauxInteret / 100, annees) - 1) / (tauxInteret / 100));
+            totalCashFlow = cashFlowValue * 12 * ((Math.pow(1 + tauxInteretValue / 100, anneesValue) - 1) / (tauxInteretValue / 100));
         } else {
-            totalCashFlow = cashFlow * ((Math.pow(1 + tauxInteret / 100, annees) - 1) / (tauxInteret / 100));
+            totalCashFlow = cashFlowValue * ((Math.pow(1 + tauxInteretValue / 100, anneesValue) - 1) / (tauxInteretValue / 100));
         }
         const resultatFinal = totalValeur + totalCashFlow;
-        setResultat(resultatFinal);
+        setResultat(resultatFinal.toFixed(2).toString());
     };
 
     const styles: { [key: string]: React.CSSProperties } = {
@@ -61,25 +80,26 @@ const CompoundInterestCalculator: React.FC = () => {
             <h2>Calculateur d&apos;Intérêts Composés</h2>
             <div>
                 <label>Montant Initial :</label>
-                <input type="number" style={styles.input} value={montantInitial} onChange={(e) => setMontantInitial(Number(e.target.value))} />
+                <input type="number" style={styles.input} value={montantInitial} onChange={(e) => setMontantInitial(e.target.value)} />
             </div>
             <div>
-                <label>Taux d&apos;Intérêt (%):</label>
-                <input type="number" style={styles.input} value={tauxInteret} onChange={(e) => setTauxInteret(Number(e.target.value))} />
+                <label>Taux d'Intérêt (%):</label>
+                <input type="number" style={styles.input} value={tauxInteret} onChange={(e) => setTauxInteret(e.target.value)} />
             </div>
             <div>
                 <label>Cash Flow:</label>
-                <input type="number" style={styles.input} value={cashFlow} onChange={(e) => setCashFlow(Number(e.target.value))} />
+                <input type="number" style={styles.input} value={cashFlow} onChange={(e) => setCashFlow(e.target.value)} />
             </div>
             <div>
                 <label>Années:</label>
-                <input type="number" style={styles.input} value={annees} onChange={(e) => setAnnees(Number(e.target.value))} />
+                <input type="number" style={styles.input} value={annees} onChange={(e) => setAnnees(e.target.value)} />
             </div>
             <div>
                 <label>Cash Flow par mois:</label>
                 <input type="checkbox" checked={cashFlowParMois} onChange={() => setCashFlowParMois(!cashFlowParMois)} />
             </div>
             <button style={styles.button} onClick={calculInteretCompose}>Calculer</button>
+            {erreur && <div style={{ color: 'red', marginTop: '10px' }}>Erreur</div>}
             <div style={styles.result}>
                 <label>Résultat:</label>
                 <span>{resultat}</span>
