@@ -20,26 +20,26 @@ const CompoundInterestCalculator: React.FC = () => {
         setResultat(resultatFinal);
     };
 
-    const styles = {
-        container: {
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            maxWidth: '300px',
-            padding: '20px',
-            border: '1px solid #ccc',
-            borderRadius: '8px',
-            backgroundColor: '#f9f9f9',
-            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-        },
-        input: {
-            width: '100%',
-            padding: '8px',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
-            marginBottom: '10px',
-        },
+    const styles: { [key: string]: React.CSSProperties } = {
+    container: {
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        maxWidth: '300px',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        backgroundColor: '#f9f9f9',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    },
+    input: {
+        width: '100%',
+        padding: '8px',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        marginBottom: '10px',
+    },
         button: {
             width: '100%',
             padding: '10px',
@@ -58,13 +58,13 @@ const CompoundInterestCalculator: React.FC = () => {
 
     return (
         <div style={styles.container}>
-            <h2>Calculateur d'Intérêts Composés</h2>
+            <h2>Calculateur d&apos;Intérêts Composés</h2>
             <div>
                 <label>Montant Initial :</label>
                 <input type="number" style={styles.input} value={montantInitial} onChange={(e) => setMontantInitial(Number(e.target.value))} />
             </div>
             <div>
-                <label>Taux d'Intérêt (%):</label>
+                <label>Taux d&apos;Intérêt (%):</label>
                 <input type="number" style={styles.input} value={tauxInteret} onChange={(e) => setTauxInteret(Number(e.target.value))} />
             </div>
             <div>

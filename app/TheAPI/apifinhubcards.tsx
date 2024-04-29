@@ -116,7 +116,7 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
               <p className="text-tremor-metric font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong ">
                 {data1['c']} USD
               </p>
-              <div className='mt-1'>
+              <div className='mt-[-12px]'>
                 <span
                   className={classNames(
                     data1['c'] > data1['pc']
