@@ -5,7 +5,7 @@ const IndexPage: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/graphique');
+    router.push('/accueil');
   }, []);
 
   return null;
