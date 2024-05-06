@@ -1,5 +1,17 @@
-import { SignIn } from "@clerk/nextjs";
+import dynamic from 'next/dynamic';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function SignInPage() {
-    return <SignIn />
+const SignIn = dynamic(() => import('@clerk/nextjs').then(mod => mod.SignUp), { ssr: false });
+
+export default function Page() {
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh'
+    }}>
+      <SignIn path="/sign-in" />
+    </div>
+  );
 }
