@@ -35,7 +35,7 @@ export default function Navbar() {
             <div className="flex h-16 md:justify-center xs:justify-between lg:justify-center md:justify-between">
               <div className="flex">
                 <div className='flex items-center'>
-                  <a href='/'>
+                  <a href='/accueil'>
                     <div className="flex flex-shrink-0 items-center ">
                       {/*source : https://iconduck.com/icons/64933/sf*/}
                       <svg
