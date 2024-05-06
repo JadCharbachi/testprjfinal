@@ -5,7 +5,7 @@ import { Stack } from "react-bootstrap";
 
 export default async function IndexPage() {
   return (
-    <main className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden" style={{ background: "content-box radial-gradient(crimson, skyblue)" }}>
+    <main className="flex flex-col items-center justify-center w-100 h-screen overflow-hidden" style={{ background: "content-box radial-gradient(crimson, skyblue)" }}>
       <div>
         {/*Source : https://vercel.com/templates/next.js/nextjs-portfolio-pageview-counter */}
         <h1 className="font-bold z-10 text-4xl text-black duration-1000 cursor-default animate-title sm:text-6xl md:text-9xl bg-clip-text">
