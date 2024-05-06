@@ -58,7 +58,7 @@ const CompoundInterestCalculator: React.FC = () => {
             padding: '8px',
             border: '1px solid #ccc',
             borderRadius: '4px',
-            marginBottom: '10px',
+            //marginBottom: '10px',
         },
         button: {
             width: '100%',
@@ -79,31 +79,64 @@ const CompoundInterestCalculator: React.FC = () => {
     return (
         <div style={styles.container}>
             <Title className='mb-2'>Calculateur d&apos;Intérêts Composés</Title>
-            <div title='Le montant initial à investir' className='mb-2'>
-                <label>Montant Initial :</label>
-                <input type="number" min={0} style={styles.input} value={montantInitial} onChange={(e) => setMontantInitial(e.target.value)} />
-            </div>
-            <div title='Le taux d&apos;intérêt' className='mb-2'>
-                <label>Taux d&apos;Intérêt (%):</label>
-                <input type="number" min={0} style={styles.input} value={tauxInteret} onChange={(e) => setTauxInteret(e.target.value)} />
-            </div>
-            <div title='Le cash flow' className='mb-3'>
-                <label>Cash Flow:</label>
-                <input type="number" min={0} style={styles.input} value={cashFlow} onChange={(e) => setCashFlow(e.target.value)} />
+            <div className='mb-5'>
                 <div>
-                    <label>Cash Flow par mois:</label>
-                    <input type="checkbox" checked={cashFlowParMois} onChange={() => setCashFlowParMois(!cashFlowParMois)} />
+                    <label title='Le montant initial à investir'>Montant Initial :</label>
+                    <input
+                        type="number"
+                        min={0}
+                        style={styles.input}
+                        value={montantInitial}
+                        onChange={(e) => setMontantInitial(e.target.value)}
+                    />
                 </div>
             </div>
-            <div title='Le nombre d&apos;années d&apos;investissement' className='mb-2'>
-                <label>Années:</label>
-                <input type="number" min={0} style={styles.input} value={annees} onChange={(e) => setAnnees(e.target.value)} />
+            <div className='mb-5'>
+                <div>
+                    <label title='Le taux d&apos;intérêt'>Taux d&apos;Intérêt (%) :</label>
+                    <input
+                        type="number"
+                        max={100}
+                        min={0}
+                        style={styles.input}
+                        value={tauxInteret}
+                        onChange={(e) => setTauxInteret(e.target.value)}
+                    />
+                </div>
+            </div>
+            <div className='mb-5'>
+                <div>
+                    <label title='Le cash flow'>Cash Flow :</label>
+                    <input
+                        type="number"
+                        min={0}
+                        style={styles.input}
+                        value={cashFlow}
+                        onChange={(e) => setCashFlow(e.target.value)}
+                    />
+                    <div className='md:justify-center items-center'>
+                        <label title='Le cash flow par mois'>Cash Flow par mois : </label>
+                        <input type="checkbox" checked={cashFlowParMois} onChange={() => setCashFlowParMois(!cashFlowParMois)} />
+                    </div>
+                </div>
+            </div>
+            <div className='mb-5'>
+                <div>
+                    <label title='Le nombre d&apos;années d&apos;investissement'>Années :</label>
+                    <input
+                        type="number"
+                        min={0}
+                        style={styles.input}
+                        value={annees}
+                        onChange={(e) => setAnnees(e.target.value)}
+                    />
+                </div>
             </div>
             <button style={styles.button} onClick={calculInteretCompose}>Calculer</button>
             {erreur && <div style={{ color: 'red', marginTop: '10px' }}>Erreur</div>}
             <div style={styles.result}>
                 <label>Résultat : </label>
-                <span>{resultat}$</span>
+                <span>{resultat ? resultat + "$" : ""}</span>
             </div>
         </div>
     );
