@@ -5,8 +5,10 @@ import { usePathname } from 'next/navigation';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useUser, SignIn, SignedOut } from '@clerk/clerk-react';
+import { useClerk } from "@clerk/clerk-react";
+import { useRouter } from 'next/navigation'
 import Image from 'next/image';
-import { ClerkProvider } from '@clerk/clerk-react';
+
 
 const navigation = [
   { name: 'Graphiques', href: '/graphique' },
@@ -24,6 +26,8 @@ function classNames(...classes: string[]) {
 export default function Navbar() {
   const pathname = usePathname();
   const { user } = useUser();
+  const { signOut } = useClerk();
+  const router = useRouter()
 
   return (
   
@@ -119,7 +123,7 @@ export default function Navbar() {
                                 active ? 'bg-gray-100' : '',
                                 'flex w-full px-4 py-2 text-sm text-gray-700'
                               )}
-                              onClick={() => SignedOut}
+                              onClick={() => signOut(() => router.push("/"))}
                             >
                               Sign out
                             </button>
@@ -135,7 +139,7 @@ export default function Navbar() {
                                   'flex w-full px-4 py-2 text-sm text-gray-700'
                                 )}
                                 //onClick={() => signIn('github')}
-                                onClick={() => window.location.href = '/login'}
+                                onClick={() => window.location.href = '/sign-in'}
                               >
                                 Sign in
                               </button>
@@ -149,7 +153,7 @@ export default function Navbar() {
                                   'flex w-full px-4 py-2 text-sm text-gray-700'
                                 )}
                                 //onClick={() => signIn('github')}
-                                onClick={() => window.location.href = '/signup'}
+                                onClick={() => window.location.href = '/sign-up'}
                               >
                                 Sign up
                               </button>
