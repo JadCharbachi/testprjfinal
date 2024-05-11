@@ -14,14 +14,14 @@ export default async function IndexPage() {
       </div>
       <div className="p-2" style={{ textAlign: "center" }}>
         <Stack >
-          <a style={{ color: "lightblue" }} className="btn btn-outline-primary btn-lg mt-4 mb-2" href="login" role="button"
+          <a style={{ color: "lightblue" }} className="btn btn-outline-primary btn-lg mt-4 mb-2" href="sign-in" role="button"
           >
             <text className="font-bold">
               Se connecter
             </text>
           </a>
           <text>
-            ou <a href="signup" style={{ color: "lightblue" }} className="font-bold link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-75-hover">S&apos;inscrire</a>
+            ou <a href="sign-up" style={{ color: "lightblue" }} className="font-bold link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-75-hover">S&apos;inscrire</a>
           </text>
         </Stack>
       </div>
