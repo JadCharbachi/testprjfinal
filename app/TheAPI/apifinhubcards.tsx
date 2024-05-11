@@ -4,7 +4,7 @@ import { Card, Title } from '@tremor/react';
 import React, { Suspense, useEffect, useState } from 'react';
 import { APIcardSkeleton } from '../ui/skeleton';
 import { Spinner } from 'react-bootstrap';
-import MyModal from './MyModal'
+import Acheter from './Acheter'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const apikey = 'coe8u09r01qjje1ujas0coe8u09r01qjje1ujasg';
@@ -130,8 +130,8 @@ const ApiFinhubCards: React.FC<ApiFinhubCardsProps> = ({ symbol }) => {
               </div>
             </div>
             <div className="flex items-center gap-4">
-            <MyModal buttonLabel="Acheter" />
-            <MyModal buttonLabel="Vendre"  />
+            <Acheter buttonLabel="Acheter" symbolAPI={symbol} />
+            <Acheter buttonLabel="Vendre"  symbolAPI={symbol}/>
             </div>
             {lastUpdated && <p className="text-sm text-gray-500 justify-center">Last updated: {lastUpdated.toLocaleString()}</p>}
           </Card>)}
