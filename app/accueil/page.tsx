@@ -1,17 +1,24 @@
+'use client'
+
+import { useUser } from '@clerk/clerk-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Stack } from "react-bootstrap";
 
 //À faire : affichage différent si connecté
 
-export default async function IndexPage() {
-  return (
-    <main className="flex flex-col items-center justify-center w-100 h-screen overflow-hidden" style={{ background: "content-box radial-gradient(crimson, skyblue)" }}>
+function UserInterface() {
+  const { user } = useUser();
+  if (user) {
+    console.log(true)
+    return (
       <div>
-        {/*Source : https://vercel.com/templates/next.js/nextjs-portfolio-pageview-counter */}
-        <h1 className="font-bold z-10 text-4xl text-black duration-1000 cursor-default animate-title sm:text-6xl md:text-9xl bg-clip-text">
-          SIMINANCE
-        </h1>
+        a
       </div>
+    )
+  } else {
+    console.log(false)
+
+    return (
       <div className="p-2" style={{ textAlign: "center" }}>
         <Stack >
           <a style={{ color: "lightblue" }} className="btn btn-outline-primary btn-lg mt-4 mb-2" href="sign-in" role="button"
@@ -25,6 +32,20 @@ export default async function IndexPage() {
           </text>
         </Stack>
       </div>
+    )
+  }
+}
+
+export default function IndexPage() {
+  return (
+    <main className="flex flex-col items-center justify-center w-100 h-screen overflow-hidden" style={{ background: "content-box radial-gradient(crimson, skyblue)" }}>
+      <div>
+        {/*Source : https://vercel.com/templates/next.js/nextjs-portfolio-pageview-counter */}
+        <h1 className="font-bold z-10 text-4xl text-black duration-1000 cursor-default animate-title sm:text-6xl md:text-9xl bg-clip-text">
+          SIMINANCE
+        </h1>
+      </div>
+      {UserInterface()}
     </main>
   );
 }

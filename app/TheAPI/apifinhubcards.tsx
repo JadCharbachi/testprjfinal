@@ -2,7 +2,6 @@
 
 import { Card, Title } from '@tremor/react';
 import React, { Suspense, useEffect, useState } from 'react';
-import { APIcardSkeleton } from '../ui/skeleton';
 import { Spinner } from 'react-bootstrap';
 import Acheter from './Acheter'
 import 'bootstrap/dist/css/bootstrap.min.css';

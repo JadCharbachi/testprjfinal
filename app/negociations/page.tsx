@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, Title, Text, TabGroup, TabList, Tab, TabPanel, TabPanels } from '@tremor/react';
+import { Card } from '@tremor/react';
 import ApiFinhubCards from "../TheAPI/apifinhubcards";
 import MarketstatusComponent from "../TheAPI/marketstatus";
 import { useState } from 'react';
