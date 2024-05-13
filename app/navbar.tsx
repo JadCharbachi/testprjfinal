@@ -9,10 +9,9 @@ import { useClerk } from "@clerk/clerk-react";
 import { useRouter } from 'next/navigation'
 import Image from 'next/image';
 
-
 const navigation = [
   { name: 'Graphiques', href: '/graphique' },
-  { name: 'Calculateur', href: '/portfolio' },
+  { name: 'Calculateur', href: '/calculateur' },
   { name: 'Négocier ', href: '/negociations' },
   { name: 'Nouvelles', href: '/nouvelles' },
   { name: 'Bug Report ', href: '/bugreport' },
@@ -30,9 +29,7 @@ export default function Navbar() {
   const router = useRouter()
 
   return (
-  
-    
-    <Disclosure as="nav" className="mb-10 bg-white shadow-sm">
+    <Disclosure as="nav" className="z-3 mb-10 bg-white shadow-sm1">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -116,19 +113,34 @@ export default function Navbar() {
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {user ? (
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'flex w-full px-4 py-2 text-sm text-gray-700'
-                              )}
-                              onClick={() => signOut(() => router.push("/"))}
-                            >
-                              Sign out
-                            </button>
-                          )}
-                        </Menu.Item>
+                        <div>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'flex w-full px-4 py-2 text-sm text-gray-700'
+                                )}
+                                onClick={() => window.location.href = '/profil'}
+                              >
+                                Profil
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'flex w-full px-4 py-2 text-sm text-gray-700'
+                                )}
+                                onClick={() => signOut(() => router.push("/"))}
+                              >
+                                Se déconnecter
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </div>
                       ) : (
                         <div>
                           <Menu.Item>
@@ -141,7 +153,7 @@ export default function Navbar() {
                                 //onClick={() => signIn('github')}
                                 onClick={() => window.location.href = '/sign-in'}
                               >
-                                Sign in
+                                Se connecter
                               </button>
                             )}
                           </Menu.Item>
@@ -155,7 +167,7 @@ export default function Navbar() {
                                 //onClick={() => signIn('github')}
                                 onClick={() => window.location.href = '/sign-up'}
                               >
-                                Sign up
+                                S'inscrire
                               </button>
                             )}
                           </Menu.Item>
@@ -197,17 +209,22 @@ export default function Navbar() {
                 </Disclosure.Button>
               ))}
             </div>
-            <div className="border-t border-gray-200 pt-4 pb-3">
+            <div className="space-y-1 border-t border-gray-200 pt-4 pb-3">
               {user ? (
-      <button onClick={() => SignedOut}>Sign out</button>
-    ) : (
-      <button onClick={() => SignIn}>Sign in</button>
-    )}
+                <div>
+                  <button onClick={() => window.location.href = '/profil'} className='flex'>Profil</button>
+                  <button onClick={() => signOut(() => router.push("/"))}>Se déconnecter</button>
+                </div>
+              ) : (
+                <div>
+                  <button onClick={() => window.location.href = '/sign-in'} className='flex'>Se connecter</button>
+                  <button onClick={() => window.location.href = '/sign-up'}>S'inscrire</button>
+                </div>
+              )}
             </div>
           </Disclosure.Panel>
         </>
       )}
     </Disclosure>
-    
   );
 }

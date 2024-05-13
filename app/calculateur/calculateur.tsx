@@ -1,5 +1,6 @@
 import { Title } from '@tremor/react';
 import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
 
 const CompoundInterestCalculator: React.FC = () => {
     const [montantInitial, setMontantInitial] = useState('');
@@ -42,8 +43,8 @@ const CompoundInterestCalculator: React.FC = () => {
 
     const styles: { [key: string]: React.CSSProperties } = {
         container: {
-            position: 'fixed',
-            top: '50%',
+            position: 'absolute',
+            top: 350,
             left: '50%',
             transform: 'translate(-50%, -50%)',
             maxWidth: '400px',
@@ -77,7 +78,7 @@ const CompoundInterestCalculator: React.FC = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <Container className='mt-4 z-0' style={styles.container}>
             <Title className='mb-2'>Calculateur d&apos;Intérêts Composés</Title>
             <div className='mb-5'>
                 <div>
@@ -138,7 +139,7 @@ const CompoundInterestCalculator: React.FC = () => {
                 <label>Résultat : </label>
                 <span>{resultat ? resultat + "$" : ""}</span>
             </div>
-        </div>
+        </Container>
     );
 };
 

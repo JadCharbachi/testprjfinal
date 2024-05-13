@@ -3,21 +3,39 @@
 import { useUser } from '@clerk/clerk-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Stack } from "react-bootstrap";
-
-//À faire : affichage différent si connecté
+import { TypeAnimation } from 'react-type-animation';
 
 function UserInterface() {
-  const { user } = useUser();
-  if (user) {
-    console.log(true)
+  const { isSignedIn, user, isLoaded } = useUser();
+  if (!isLoaded) {
+    console.log(false)
+    return (
+      <div className='p-3 mt-10' style={{ fontSize: '2em' }}>
+        {"\xa0"}
+      </div>
+    )
+  }
+
+  if (isSignedIn) {
     return (
       <div>
-        a
+        <div className='flex p-3 mt-10' style={{ alignItems: 'baseline' }}>
+          <TypeAnimation
+            preRenderFirstString={true}
+            sequence={[
+              // Same substring at the start will only be typed once, initially
+              "Bienvenue",
+              500,
+              "Bienvenue " + String(user.username),
+              10000,
+            ]}
+            speed={50}
+            style={{ fontSize: '2em' }}
+          />
+        </div>
       </div>
     )
   } else {
-    console.log(false)
-
     return (
       <div className="p-2" style={{ textAlign: "center" }}>
         <Stack >
