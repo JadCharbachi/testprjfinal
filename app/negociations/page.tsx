@@ -36,8 +36,10 @@ export default function TestPage() {
                     <button type="submit" className="border border-3 rounded p-1">Search</button>
                 </form>
                 <div className="flex flex-wrap mt-4">
-                    {symbols.map(symbol => (
-                        <ApiFinhubCards key={symbol} symbol={symbol.toUpperCase()} />
+                    {symbols.map((symbol, margin) => (
+                        <div key={symbol} style={{ margin: '10px' }}> 
+                        <ApiFinhubCards symbol={symbol.toUpperCase()} />
+                    </div>
                     ))}
                 </div>
             </Card>
